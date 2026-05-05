@@ -1,0 +1,310 @@
+/* ================================================================
+ 1. VARIÁVEIS CSS E RESET GLOBAL
+================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #111111;
+  --card-bg: #1e1e1e;
+  --input-bg: #2a2a2a; 
+  --pink: #f48fb1;
+  --green: #7db589;
+  --yellow: #d4e157;
+  --white: #ffffff;
+  --text-muted:#888888;
+  --border: rgba(255,255,255,0.12);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow: hidden; 
+}
+
+/* Ajuste Crítico: Classe para esconder elementos */
+.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.pink { color: var(--pink); }
+.green { color: var(--green); }
+
+/* ================================================================
+ 2. TELA DE INTRO
+================================================================ */
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('intro(1).png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1000; /* Garante que está na frente de tudo */
+  transition: opacity 0.8s ease;
+}
+
+#intro-screen.fade-out {
+  opacity: 0;
+}
+
+.intro-content {
+  text-align: center;
+}
+
+.intro-logo {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 800;
+  color: var(--white);
+  text-shadow: 0 0 60px rgba(189, 189, 189, 0.15);
+}
+
+.intro-logo.smoke-out {
+  animation: smokeOut 1.2s ease forwards;
+}
+
+@keyframes smokeOut {
+  0% { opacity: 1; transform: scale(1); filter: blur(0px); }
+  40% { opacity: 0.6; transform: scale(1.08); filter: blur(4px); }
+  100% { opacity: 0; transform: scale(1.25); filter: blur(18px); }
+}
+
+.intro-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  color: var(--text-muted);
+}
+
+.intro-tagline.fade-out-tag {
+  animation: tagFade 0.8s ease forwards;
+}
+
+@keyframes tagFade {
+  to { opacity: 0; transform: translateY(10px); }
+}
+
+/* ================================================================
+ 3. TELA DE AUTENTICAÇÃO
+================================================================ */
+#auth-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background-image: url('intro(1).png');
+  background-size: cover;
+  background-position: center;
+}
+
+#auth-screen.slide-in {
+  animation: slideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2.5rem;
+  z-index: 10; 
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.btn-signup {
+  background: transparent;
+  border: 1.5px solid var(--white);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 0.55rem 1.5rem;
+  border-radius: 999px; 
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-signup:hover {
+  background: var(--white);
+  color: var(--bg);
+}
+
+.headline {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.auth-card {
+  background: rgba(28,28,28,0.85);
+  backdrop-filter: blur(18px); 
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  width: 90%;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.5);
+}
+
+.form-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 1.6rem;
+  text-align: center;
+}
+
+.input-group { margin-bottom: 1rem; }
+
+.input-group input {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 999px; 
+  color: var(--white);
+  padding: 0.85rem 1.4rem;
+  outline: none;
+}
+
+.btn-enter {
+  width: 100%;
+  background: var(--white);
+  color: #111;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-enter:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(255,255,255,0.2);
+}
+
+.form-error { color: #ff6b6b; font-size: 0.82rem; text-align: center; margin-top: 5px; }
+.form-success { color: var(--green); font-size: 0.82rem; text-align: center; }
+.form-switch { text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); }
+.link { color: var(--pink); cursor: pointer; text-decoration: underline; }
+
+/* ================================================================
+ 4. TELA PRINCIPAL
+================================================================ */
+#main-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background-image: url('1(1).png');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  gap: 1rem;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  background: #e8e8e8;
+  border-radius: 999px;
+  padding: 0.65rem 1.2rem;
+  max-width: 700px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #222;
+}
+
+.main-content {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  flex: 1;
+}
+
+.music-list-section { flex: 1; }
+
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.music-item {
+  background: rgba(35,35,35,0.8);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-title { font-weight: 600; display: block; }
+.item-artist { color: var(--text-muted); font-size: 0.8rem; }
+.item-del { cursor: pointer; color: var(--text-muted); }
+.item-del:hover { color: #ff6b6b; }
+
+.add-sound-panel {
+  width: 360px;
+  background: rgba(28,28,28,0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.8rem;
+  height: fit-content;
+}
+
+.add-sound-form { display: flex; flex-direction: column; gap: 0.8rem; }
+.add-sound-form input {
+  background: var(--input-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem;
+  color: white;
+}
+
+.btn-add {
+  background: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
