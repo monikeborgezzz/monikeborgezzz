@@ -11,22 +11,16 @@
 </head>
 <body>
 
-  <!-- ============================================================
-       TELA 1: INTRO
-       Aparece ao carregar a página. Mostra o logo "sound" com
-       animação de surgimento. Depois de ~1.8s o logo some com
-       efeito de fumaça (blur + scale) e a tela transiciona
-       para a tela de autenticação.
-  ============================================================ -->
+  
   <div id="intro-screen">
 
 
-    <!-- Conteúdo central da intro -->
+
     <div class="intro-content">
-      <!-- Logo principal: recebe a classe "smoke-out" via JS para sumir -->
+ 
       <h1 class="intro-logo" id="intro-logo">sound</h1>
 
-      <!-- Tagline abaixo do logo com palavras coloridas -->
+    
       <p class="intro-tagline">
         <span class="pink">Music</span> is all over <span class="green">you.</span>
       </p>
@@ -34,41 +28,31 @@
   </div>
 
 
-  <!-- ============================================================
-       TELA 2: AUTENTICAÇÃO (Login + Cadastro)
-       Começa oculta (classe "hidden"). É exibida após a intro.
-       Contém o formulário de login E o de cadastro — apenas
-       um fica visível por vez, controlado pelo JavaScript.
-  ============================================================ -->
+
   <div id="auth-screen" class="hidden">
 
   
-    <!-- ---- BARRA DE NAVEGAÇÃO ---- -->
     <nav class="navbar">
-      <!-- Logo no canto esquerdo -->
       <span class="nav-logo">sound</span>
 
-      <!-- Botão "Sign up" / "Login" que alterna entre os formulários.
-           O texto muda via JavaScript dependendo do formulário ativo. -->
+     
       <button class="btn-signup" id="toggle-btn">Sign up</button>
     </nav>
 
-    <!-- ---- HEADLINE / SLOGAN ---- -->
+
     <div class="headline">
       <p> save your <span class="pink">Music</span></p>
       <p>the way <span class="green">you</span> like</p>
     </div>
 
-    <!-- ---- CARD DO FORMULÁRIO ---- -->
-    <!-- Container com fundo semitransparente que envolve os formulários -->
+    
     <div class="auth-card">
 
-      <!-- ---- FORMULÁRIO DE LOGIN ---- -->
-      <!-- Visível por padrão. O JS esconde/mostra conforme necessário. -->
+  
       <div id="login-form" class="form-section">
         <h2>Login</h2>
 
-        <!-- Campo: email ou nome de usuário -->
+       
         <div class="input-group">
           <input
             type="text"
@@ -90,27 +74,25 @@
           />
         </div>
 
-        <!-- Mensagem de erro: aparece se o usuário não existe no cadastro.
-             Começa oculta; o JS remove "hidden" quando necessário. -->
+     
         <p class="form-error hidden" id="login-error">
           Usuário não encontrado. Faça o cadastro primeiro.
         </p>
 
-        <!-- Botão de entrar -->
+      
         <button class="btn-enter" id="login-submit">Entrar</button>
 
-        <!-- Link para trocar para o formulário de cadastro -->
+     
         <p class="form-switch">
           Não tem conta? <span class="link" id="go-signup">Cadastre-se</span>
         </p>
       </div>
 
-      <!-- ---- FORMULÁRIO DE CADASTRO ---- -->
-      <!-- Começa oculto. Aparece ao clicar em "Sign up" ou "Cadastre-se". -->
+     
       <div id="signup-form" class="form-section hidden">
         <h2>Cadastro</h2>
 
-        <!-- Campo: nome de usuário -->
+      
         <div class="input-group">
           <input
             type="text"
@@ -121,7 +103,7 @@
           />
         </div>
 
-        <!-- Campo: senha -->
+        
         <div class="input-group">
           <input
             type="password"
@@ -132,7 +114,7 @@
           />
         </div>
 
-        <!-- Campo: email -->
+      
         <div class="input-group">
           <input
             type="email"
@@ -143,41 +125,35 @@
           />
         </div>
 
-        <!-- Mensagem de erro: campos vazios ou usuário já existente -->
+     
         <p class="form-error hidden" id="signup-error">Preencha todos os campos.</p>
 
-        <!-- Mensagem de sucesso: aparece após cadastro bem-sucedido -->
+     
         <p class="form-success hidden" id="signup-success">Cadastro realizado! Faça login.</p>
 
-        <!-- Botão de confirmar cadastro -->
+  
         <button class="btn-enter" id="signup-submit">Entrar</button>
 
-        <!-- Link para voltar ao login -->
+     
         <p class="form-switch">
           Já tem conta? <span class="link" id="go-login">Entrar</span>
         </p>
       </div>
 
-    </div><!-- fim .auth-card -->
-  </div><!-- fim #auth-screen -->
+    </div>
+  </div>
 
 
-  <!-- ============================================================
-       TELA 3: APP PRINCIPAL
-       Exibida após login bem-sucedido. Contém a barra de busca,
-       a lista de músicas e o painel para adicionar novas músicas.
-  ============================================================ -->
+
   <div id="main-screen" class="hidden">
 
-    <!-- Decoração de fundo (blob roxo, vinil giratório, estrelas, redemoinhos) -->
 
-    <!-- ---- CABEÇALHO / TOPBAR ---- -->
     <header class="main-header">
 
-      <!-- Logo no canto esquerdo -->
+     
       <span class="nav-logo">sound</span>
 
-      <!-- Barra de pesquisa: filtra a lista de músicas em tempo real -->
+  
       <div class="search-bar">
         <span class="search-icon">🔍</span>
         <input
@@ -197,41 +173,40 @@
       </div>
     </header>
 
-    <!-- ---- CONTEÚDO PRINCIPAL ---- -->
+ 
     <main class="main-content">
 
-      <!-- Seção esquerda: lista de músicas salvas -->
+     
       <section class="music-list-section">
         <h2>Music List</h2>
 
-        <!-- Container onde os itens de música são injetados pelo JS -->
+     
         <div class="music-list" id="music-list"></div>
 
-        <!-- Mensagem exibida quando a lista está vazia ou sem resultados -->
+      
         <p class="empty-msg hidden" id="empty-msg">Nenhuma música encontrada.</p>
       </section>
 
-      <!-- Seção direita: formulário para adicionar nova música -->
+
       <section class="add-sound-panel">
         <h3>Add a <strong>Sound!</strong></h3>
 
         <div class="add-sound-form">
-          <!-- Campo: título da música -->
+         
           <input type="text" id="new-title" placeholder="Título da música" />
 
-          <!-- Campo: nome do artista -->
+       
           <input type="text" id="new-artist" placeholder="Artista" />
 
-          <!-- Botão de adicionar à lista -->
+         
           <button class="btn-add" id="btn-add-sound">+ Adicionar</button>
         </div>
       </section>
 
     </main>
-  </div><!-- fim #main-screen -->
+  </div>
 
 
-  <!-- Importa o arquivo JavaScript que controla toda a lógica do app -->
   <script src="app.js"></script>
 </body>
 </html>

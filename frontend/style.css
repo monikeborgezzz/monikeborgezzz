@@ -1,6 +1,4 @@
-/* ================================================================
- 1. VARIÁVEIS CSS E RESET GLOBAL
-================================================================ */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -30,7 +28,7 @@ html, body {
   overflow: hidden; 
 }
 
-/* Ajuste Crítico: Classe para esconder elementos */
+
 .hidden {
   display: none !important;
   opacity: 0 !important;
@@ -40,9 +38,7 @@ html, body {
 .pink { color: var(--pink); }
 .green { color: var(--green); }
 
-/* ================================================================
- 2. TELA DE INTRO
-================================================================ */
+
 #intro-screen {
   position: fixed;
   inset: 0;
@@ -52,7 +48,7 @@ html, body {
   background-image: url('intro(1).png');
   background-size: cover;
   background-position: center;
-  z-index: 1000; /* Garante que está na frente de tudo */
+  z-index: 1000;
   transition: opacity 0.8s ease;
 }
 
@@ -96,9 +92,7 @@ html, body {
   to { opacity: 0; transform: translateY(10px); }
 }
 
-/* ================================================================
- 3. TELA DE AUTENTICAÇÃO
-================================================================ */
+
 #auth-screen {
   position: fixed;
   inset: 0;
@@ -212,9 +206,7 @@ html, body {
 .form-switch { text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); }
 .link { color: var(--pink); cursor: pointer; text-decoration: underline; }
 
-/* ================================================================
- 4. TELA PRINCIPAL
-================================================================ */
+
 #main-screen {
   position: fixed;
   inset: 0;

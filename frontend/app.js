@@ -7,9 +7,6 @@ const mainScreen = document.getElementById('main-screen');
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 
-// ----------------------------------------------------------------
-// CONTROLE DA INTRO (2.6 SEGUNDOS)
-// ----------------------------------------------------------------
 window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         const logo = document.getElementById('intro-logo');
@@ -26,9 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 2600);
 });
 
-// ----------------------------------------------------------------
-// LOGIN E CADASTRO
-// ----------------------------------------------------------------
+
 
 async function doLogin() {
     const userOrEmail = document.getElementById('login-user').value.trim();
@@ -75,9 +70,7 @@ async function doSignup() {
     }
 }
 
-// ----------------------------------------------------------------
-// MÚSICAS (CRUD)
-// ----------------------------------------------------------------
+
 
 async function loadSongs() {
     const response = await fetch(`${API_URL}/musicas`);
