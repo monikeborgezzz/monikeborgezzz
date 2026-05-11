@@ -110,5 +110,5 @@ async function deleteSong(id) {
 document.getElementById('login-submit').onclick = doLogin;
 document.getElementById('signup-submit').onclick = doSignup;
 document.getElementById('btn-add-sound').onclick = doAddSong;
-documlent.getElementById('go-signup').onclick = () => { loginForm.classList.add('hidden'); signupForm.classList.remove('hidden'); };
+document.getElementById('go-signup').onclick = () => { loginForm.classList.add('hidden'); signupForm.classList.remove('hidden'); };
 document.getElementById('go-login').onclick = () => { signupForm.classList.add('hidden'); loginForm.classList.remove('hidden'); };
